@@ -8,15 +8,18 @@ const InputForm = () => {
             username : '',
             email : '',
             fullname : ''
+        },
+        onSubmit : values => {
+          console.log("Formik values ", values);
         }
     })
 
-    console.log("Formik values ", formik.values);
+    
 
   return (
     <div className="h-screen flex bg-gray-100 justify-center items-center">
       <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={formik.handleSubmit}>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -65,6 +68,9 @@ const InputForm = () => {
               value={formik.values.fullname}
             />
           </div>
+          <div className="mb-4">
+              <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded">Submit</button>
+            </div> 
         </form>
       </div>
     </div>
