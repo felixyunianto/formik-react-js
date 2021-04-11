@@ -1,37 +1,28 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const InputForm = () => {
+  const initialValues = {
+    username: "",
+    email: "",
+    fullname: "",
+  };
+
+  const onSubmit = (values) => {
+    console.log("Formik values ", values);
+  };
+
+  const validationSchema = Yup.object({
+    username: Yup.string().required("Required!"),
+    email: Yup.string().email("Invalid email Format!").required("Required!"),
+    fullname: Yup.string().required("Required"),
+  });
+
   const formik = useFormik({
-    initialValues: {
-      username: "",
-      email: "",
-      fullname: "",
-    },
-    onSubmit: (values) => {
-      console.log("Formik values ", values);
-    },
-    validate: (values) => {
-      let errors = {};
-
-      if (!values.username) {
-        errors.username = "Required";
-      }
-
-      if (!values.email) {
-        errors.email = "Required";
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      ) {
-        errors.email = "Invalid email format";
-      }
-
-      if (!values.fullname) {
-        errors.fullname = "Required";
-      }
-
-      return errors;
-    },
+    initialValues,
+    onSubmit,
+    validationSchema,
   });
 
   return (
