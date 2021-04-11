@@ -54,10 +54,11 @@ const InputForm = () => {
               type="text"
               placeholder="Username"
               name="username"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.username}
             />
-            {formik.errors.username ? (
+            {formik.touched.username && formik.errors.username ? (
               <span className="text-red-500 text-sm">
                 {formik.errors.username}
               </span>
@@ -76,10 +77,11 @@ const InputForm = () => {
               type="email"
               placeholder="Email"
               name="email"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-            {formik.errors.email ? (
+            {formik.touched.email && formik.errors.email ? (
               <span className="text-red-500 text-sm">
                 {formik.errors.email}
               </span>
@@ -95,10 +97,11 @@ const InputForm = () => {
               id="fullname"
               placeholder="Fullname"
               name="fullname"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.fullname}
             />
-            {formik.errors.fullname ? (
+            {formik.touched.fullname && formik.errors.fullname ? (
               <span className="text-red-500 text-sm">
                 {formik.errors.fullname}
               </span>
